@@ -2,6 +2,7 @@
 // Licensed under the MIT License.
 
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
 using Microsoft.Identity.Client.ApiConfig.Parameters;
@@ -88,13 +89,22 @@ namespace Microsoft.Identity.Client.Internal.Requests
             apiEvent.IsConfidentialClient = true;
         }
 
-        protected override SortedSet<string> GetOverridenScopes(ISet<string> inputScope)
+        protected override SortedSet<string> GetOverridenScopes(ISet<string> inputScopes)
         {
+            if (inputScopes == null || !inputScopes.Any())
+            {
+                throw new MsalClientException(
+                    MsalError.ClientCredentialsScopesRequired,
+                    MsalErrorMessage.ClientCredentialsScopesRequired);
+            }
+
             // Client credentials should not add the reserved scopes
             // "openid", "profile" and "offline_access" 
             // because AT is on behalf of an app (no profile, no IDToken, no RT)
-            return new SortedSet<string>(inputScope);
+            return new SortedSet<string>(inputScopes);
         }
+
+        protected override 
 
         private Dictionary<string, string> GetBodyParameters()
         {

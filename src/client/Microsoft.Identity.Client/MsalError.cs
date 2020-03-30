@@ -775,6 +775,12 @@ namespace Microsoft.Identity.Client
         /// </summary>
         public const string CustomMetadataInstanceOrUri = "custom_metadata_instance_or_uri";
 
+        /// <summary>
+        /// <para>What happens?</para>No scopes have been requested
+        /// <para>Mitigation</para>At least one scope must be specified for a service to service token
+        /// </summary>
+        public const string ClientCredentialsScopesRequired = "scopes_required_client_credentials";
+
 #if iOS
         /// <summary>
         /// Xamarin.iOS specific. This error indicates that keychain access has not be enabled for the application.

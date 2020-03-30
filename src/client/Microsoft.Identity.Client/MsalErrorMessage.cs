@@ -303,6 +303,8 @@ namespace Microsoft.Identity.Client
         public const string CustomMetadataInstanceOrUri = "You have configured your own instance metadata using both an Uri and a string. Only one is supported. " +
             "See https://aka.ms/msal-net-custom-instance-metadata for more details.";
 
+        public const string ClientCredentialsScopesRequired = "At least one scope needs to be requested for a service to service call.";
+
         public static string ExperimentalFeature(string methodName)
         {
             return string.Format(

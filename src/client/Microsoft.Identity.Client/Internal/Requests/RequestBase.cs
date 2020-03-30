@@ -81,9 +81,7 @@ namespace Microsoft.Identity.Client.Internal.Requests
         /// input scopes with reserved scopes (openid, profile etc.)
         /// Leave as is / return null otherwise
         /// </summary>
-        /// <param name="inputScope"></param>
-        /// <returns></returns>
-        protected virtual SortedSet<string> GetOverridenScopes(ISet<string> inputScope)
+        protected virtual SortedSet<string> GetOverridenScopes(ISet<string> inputScopes)
         {
             return null;
         }
@@ -296,7 +294,5 @@ namespace Microsoft.Identity.Client.Internal.Requests
                         result.ExpiresOn));
             }
         }
-
-       
     }
 }
